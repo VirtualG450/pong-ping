@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var paddle_texture : TextureRect = $TextureRect
 var texture_y := 0.0
 var screen_y := 0.0
-var speed := 240.0
+var speed := 300.0
 # Animations
 var tween1 : Tween
 var time1 := 0.1

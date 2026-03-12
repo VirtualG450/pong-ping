@@ -6,9 +6,9 @@ extends StaticBody2D
 var texture_y := 0.0
 var screen_y := 0.0
 # Movement settings
-var speed := 200.0
+var speed := 300.0
 var target_y := 0.0
-var deviation := 2.0
+var deviation := 0.0
 # Animations
 var tween1 : Tween
 var time1 := 0.1
@@ -29,7 +29,7 @@ func _process(delta):
 
 func _auto_movement(delta:float) -> void:
 	# Update target position with small deviation
-	target_y = ball.global_position.y - global_position.y
+	target_y = ball.global_position.y - global_position.y + deviation
 	# Move towards target y direction
 	if abs(target_y) > speed * delta:
 		# Speed * (-1 or 1)
@@ -47,3 +47,5 @@ func impact() -> void:
 	tween1 = create_tween()
 	tween1.tween_property(self,"modulate", Color(3,3,3,3), time1)
 	tween1.tween_property(self,"modulate", Color(1,1,1,1), time1)
+	# Randomize debiation each hit
+	deviation = randf_range(-texture_y, texture_y)

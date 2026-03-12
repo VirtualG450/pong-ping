@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PongPing"
-config/version="0.0.1"
+config/version="1.0.0"
 run/main_scene="uid://qemgu60qjalb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(7.821247e-08, 0.076574184, 0.10468475, 1)
@@ -30,6 +30,7 @@ folder_colors={
 "res://Assets/": "red",
 "res://Assets/Audios/": "red",
 "res://Assets/Sprites/": "red",
+"res://Scenes/": "blue",
 "res://Scripts/": "purple"
 }
 

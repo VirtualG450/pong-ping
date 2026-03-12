@@ -3,7 +3,6 @@ extends Node2D
 @onready var points_1 : Label = %Points1
 @onready var points_2 : Label = %Points2
 
-
 var scoreboard :Array[int] = [0, 0]
 
 func _ready():
@@ -20,3 +19,6 @@ func point_scored(on_left_side:bool):
 func _update_counters() -> void:
 	points_1.text = str( scoreboard[0] )
 	points_2.text = str( scoreboard[1] )
+
+func _on_retry_pressed():
+	get_tree().reload_current_scene()

@@ -6,6 +6,9 @@ extends CharacterBody2D
 @onready var cpu_paddle : StaticBody2D = $"../CpuPaddle"
 @onready var left_score : StaticBody2D = %LeftScore
 @onready var right_score : StaticBody2D = %RightScore
+@onready var ball_wall_hit : AudioStreamPlayer2D = $BallWallHit
+@onready var ball_paddle_hit : AudioStreamPlayer2D = $BallPaddleHit
+@onready var ball_scored : AudioStreamPlayer = $BallScored
 # Ball settings
 var accel := 20.0
 var speed := 150.0
@@ -43,6 +46,7 @@ func _physics_process(delta):
 	# Walls = bounce
 	if collider == walls:
 		dir = dir.bounce(collision.get_normal())
+		ball_wall_hit.play()
 	# Paddles = bounce + speed up
 	elif collider == paddle_1 or collider == cpu_paddle:
 		speed += accel
@@ -50,13 +54,16 @@ func _physics_process(delta):
 		dir.x = -dir.x
 		dir.y = collider.global_position.direction_to(global_position).y
 		collider.impact()
+		ball_paddle_hit.play()
 	# Score = Restart position and signal point
 	elif collider == left_score:
 		start_ball()
 		main_node.point_scored(true)
+		ball_scored.play()
 	elif collider == right_score:
 		start_ball()
 		main_node.point_scored(false)
+		ball_scored.play()
 
 
 #
