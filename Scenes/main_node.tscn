@@ -282,7 +282,7 @@ texture = ExtResource("10_hwhuf")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=564404043]
+[node name="BallHitbox" type="CollisionShape2D" parent="Ball" unique_id=564404043]
 shape = SubResource("RectangleShape2D_shna5")
 
 [node name="BallWallHit" type="AudioStreamPlayer2D" parent="Ball" unique_id=1583119765]
